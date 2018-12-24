@@ -45,9 +45,16 @@ public class JavaArrayListMain {
         //根据subList的迭代器复制一份出来
         List<String> subList = new ArrayList<String>(arrayList.subList(1,2));
 
+        //或者复制出一个数组来
+        String[] subArray = arrayList.subList(1,2).toArray(new String[0]);
+
         arrayList.add("3");
 
         for(String item:subList){
+            System.out.println(item);
+        }
+
+        for(String item:subArray){
             System.out.println(item);
         }
     }
