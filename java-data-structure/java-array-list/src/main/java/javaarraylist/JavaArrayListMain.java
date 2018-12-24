@@ -13,7 +13,7 @@ public class JavaArrayListMain {
     }
 
 
-    //问题
+    //问题 ArrayList LinkedList 都有这个问题。AbstractList 中的默认实现就存在这个问题
     //会出现 java.util.ConcurrentModificationException
     public static void testArrayListSubListIssue(){
         ArrayList<String> arrayList = new ArrayList<String>();
