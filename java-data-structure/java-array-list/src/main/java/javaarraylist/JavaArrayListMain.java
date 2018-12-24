@@ -19,7 +19,7 @@ public class JavaArrayListMain {
         arrayList.add("2");
 
         //这里subList与arrayList共用了相同的存储空间。
-        //ArrayList 的 modCount = 2 这是 求出来的 subList的 modCount = 2
+        //ArrayList 的 modCount = 2 这时赋给了 subList的 modCount = 2
         List<String> subList = arrayList.subList(1,2);
 
         //subList 的 modeCount = 2 而 ArrayList的 modCount = 3
