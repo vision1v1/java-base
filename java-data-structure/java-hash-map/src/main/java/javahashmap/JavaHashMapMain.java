@@ -1,9 +1,6 @@
 package javahashmap;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.BiConsumer;
 
@@ -25,10 +22,15 @@ public class JavaHashMapMain {
 
         //3.如果一个线程尝试修改它, 而另一个线程在它上迭代, ConcurrentHashMap 不会引发并发修改异常。迭代器反映hash map创建时的状态。SynchronizedMap返回迭代器, 它在并发修改时会立即失败。
 
-        testConcurrentHashMap();
+        //testConcurrentHashMap();
 
-        testSynchronizedMap();
+        //testSynchronizedMap();
 
+        //testMerge();
+
+        //testCompare();
+
+        findOutExtraKeys();
     }
 
 
@@ -38,6 +40,7 @@ public class JavaHashMapMain {
         ageMaps.put("th000", 22);
         ageMaps.put("fly100", 23);
         ageMaps.put("ted", 24);
+        ageMaps.put("ted", 245);
 
         System.out.println(ageMaps.containsKey("infi"));
 
@@ -59,7 +62,7 @@ public class JavaHashMapMain {
         System.out.println("-----------------iterator----------");
 
         Iterator<String> keyIterator = ageMaps.keySet().iterator();
-        while (keyIterator.hasNext()){
+        while (keyIterator.hasNext()) {
             String key = keyIterator.next();
             System.out.println(key + " : " + ageMaps.get(key));
         }
@@ -68,7 +71,7 @@ public class JavaHashMapMain {
 
         keyIterator = ageMaps.keySet().iterator();
 
-        keyIterator.forEachRemaining(item->{
+        keyIterator.forEachRemaining(item -> {
             System.out.println(item + " : " + ageMaps.get(item));
         });
 
@@ -80,8 +83,8 @@ public class JavaHashMapMain {
 
     }
 
-    public static void testConcurrentHashMap(){
-        ConcurrentHashMap<String,Integer> ageMaps = new ConcurrentHashMap<>();
+    public static void testConcurrentHashMap() {
+        ConcurrentHashMap<String, Integer> ageMaps = new ConcurrentHashMap<>();
         ageMaps.put("infi", 20);
         ageMaps.put("th000", 22);
         ageMaps.put("fly100", 23);
@@ -89,8 +92,8 @@ public class JavaHashMapMain {
 
         Iterator<String> iterator = ageMaps.keySet().iterator();
 
-        synchronized (ageMaps){
-            while (iterator.hasNext()){
+        synchronized (ageMaps) {
+            while (iterator.hasNext()) {
                 String key = iterator.next();
                 System.out.println(key + " : " + ageMaps.get(key));
             }
@@ -98,7 +101,7 @@ public class JavaHashMapMain {
     }
 
 
-    public static void testSynchronizedMap(){
+    public static void testSynchronizedMap() {
         Map<Integer, String> syncHashMap = Collections.synchronizedMap(new HashMap<>());
 
         //Put require no synchronization
@@ -111,15 +114,84 @@ public class JavaHashMapMain {
         Iterator<Integer> itr = syncHashMap.keySet().iterator();
 
         //Using synchronized block is advisable
-        synchronized (syncHashMap)
-        {
-            while(itr.hasNext()) {
+        synchronized (syncHashMap) {
+            while (itr.hasNext()) {
                 System.out.println(syncHashMap.get(itr.next()));
             }
         }
     }
 
 
+    public static void testMerge() {
+        Map<Integer, String> map1 = new HashMap<>();
+        map1.put(1, "a");
+        map1.put(2, "b");
+        map1.put(3, "c");
+        map1.put(4, "d");
+
+        Map<Integer, String> map2 = new HashMap<>();
+        map2.put(1, "e");
+        map2.put(2, "f");
+
+
+        map2.forEach((k, v) -> {
+            map1.merge(k, v, (v1, v2) -> v1.equals(v2) ? v1 : v1 + "," + v2);
+        });
+
+        System.out.println(map1);
+    }
+
+    public static void testCompare(){
+        HashMap<Integer, String> map1 = new HashMap<>();
+
+        map1.put(1, "A");
+        map1.put(2, "B");
+        map1.put(3, "C");
+
+        //Same keys as map1
+        HashMap<Integer, String> map2 = new HashMap<>();
+
+        map2.put(3, "C");
+        map2.put(1, "A");
+        map2.put(2, "B");
+
+        //Different keys than map1
+        HashMap<Integer, String> map3 = new HashMap<>();
+
+        map3.put(1, "A");
+        map3.put(2, "B");
+        map3.put(3, "C");
+        map3.put(4, "D");
+
+        System.out.println( map1.keySet().equals( map2.keySet() ));  //true
+        System.out.println( map1.keySet().equals( map3.keySet() ));  //false
+    }
+
+    public static void findOutExtraKeys(){
+        //map 1 has 3 keys
+        HashMap<Integer, String> map1 = new HashMap<>();
+
+        map1.put(1, "A");
+        map1.put(2, "B");
+        map1.put(3, "C");
+        map1.put(5, "C");
+
+        //map 2 has 4 keys
+        HashMap<Integer, String> map2 = new HashMap<>();
+
+        map2.put(1, "A");
+        map2.put(2, "B");
+        map2.put(3, "C");
+        map2.put(4, "C");
+
+        //Union of keys from both maps
+        HashSet<Integer> unionKeys = new HashSet<>(map1.keySet());
+        unionKeys.addAll(map2.keySet());
+
+        unionKeys.removeAll(map1.keySet());
+
+        System.out.println(unionKeys);
+    }
 
     static final int hash(Object key) {
         int h;
