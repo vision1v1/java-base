@@ -35,7 +35,7 @@ public class JavaHashMapMain {
 
 
     public static void testMap() {
-        Map<String, Integer> ageMaps = new HashMap<String, Integer>();
+        HashMap<String, Integer> ageMaps = new HashMap<String, Integer>();
         ageMaps.put("infi", 20);
         ageMaps.put("th000", 22);
         ageMaps.put("fly100", 23);
