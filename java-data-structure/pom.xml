@@ -11,6 +11,9 @@
     <modules>
         <module>java-array-list</module>
         <module>java-hash-map</module>
+        <module>java-hash-table</module>
+        <module>java-linked-hash-map</module>
+        <module>java-tree-map</module>
     </modules>
 
 
