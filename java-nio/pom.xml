@@ -10,6 +10,9 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>channel-buffer-usage</module>
+        <module>server-socket-channel-server</module>
+        <module>socket-channel-client</module>
+        <module>server-socket-channel-selector-server</module>
     </modules>
 
 
