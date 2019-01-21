@@ -117,8 +117,8 @@ public class ReentrantLockUsageMain {
         t2.start();
 
         try {
-            t1.join();
-            t2.join();
+            Thread.sleep(5000);
+            //t2.interrupt();//中断死锁的线程
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
