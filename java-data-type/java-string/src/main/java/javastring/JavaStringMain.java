@@ -7,7 +7,11 @@ public class JavaStringMain {
     public static void main(String[] args){
         //test01();
 
-        test02();
+        //test02();
+
+        test03();
+
+
     }
 
     //测试字符串常量池与堆上创建
@@ -42,10 +46,26 @@ public class JavaStringMain {
         System.out.println(s.chars().filter(e->e==97).summaryStatistics().getCount());
 
         System.out.println(Arrays.toString(s.chars().map(e->e+1).toArray()));
+
+    }
+
+    //StringBuffer 是线程安全的，StringBuilder 非线程安全的。其它功能一样
+    private static void test03(){
+        //StringBuffer 是线程安全的
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append("abc");
+        stringBuffer.append("def");
+        System.out.println(stringBuffer.toString());
+
+        //StringBuilder 非线程安全的
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("abc");
+        stringBuilder.append("def");
+        System.out.println(stringBuilder.toString());
     }
 
     //to do
-    private static void test03(){
+    private static void test0X(){
 //        java.lang.StringBuffer
 //
 //        java.lang.StringBuilder

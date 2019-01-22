@@ -24,6 +24,7 @@
     </build>
     <modules>
         <module>java-string</module>
+        <module>java-intstream</module>
     </modules>
 
 </project>
