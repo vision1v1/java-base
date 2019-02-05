@@ -13,6 +13,7 @@
         <module>volatile-usage</module>
         <module>producer-consumer-problem</module>
         <module>reentrant-lock-usage</module>
+        <module>limit-latch-usage</module>
     </modules>
 
 
