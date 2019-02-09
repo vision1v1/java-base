@@ -15,6 +15,7 @@
         <module>reentrant-lock-usage</module>
         <module>limit-latch-usage</module>
         <module>count-down-latch-usage</module>
+        <module>lock-support-usage</module>
     </modules>
 
 
