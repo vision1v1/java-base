@@ -17,6 +17,7 @@
         <module>count-down-latch-usage</module>
         <module>lock-support-usage</module>
         <module>semaphore-usage</module>
+        <module>reentrant-read-write-lock-usage</module>
     </modules>
 
 
