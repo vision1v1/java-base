@@ -19,6 +19,7 @@
         <module>semaphore-usage</module>
         <module>reentrant-read-write-lock-usage</module>
         <module>future-task-usage</module>
+        <module>scheduled-threadpool-executor</module>
     </modules>
 
 
