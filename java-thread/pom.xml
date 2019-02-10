@@ -18,6 +18,7 @@
         <module>lock-support-usage</module>
         <module>semaphore-usage</module>
         <module>reentrant-read-write-lock-usage</module>
+        <module>future-task-usage</module>
     </modules>
 
 
