@@ -11,7 +11,8 @@ public class ClassLoaderMain {
     public static void main(String[] args) {
         //test01();
         //test02();
-        test03();
+        //test03();
+        test04();
         end();
     }
 
@@ -54,6 +55,7 @@ public class ClassLoaderMain {
     }
 
     //调试loadClass源代码
+    @SuppressWarnings("Duplicates")
     public static void test03() {
         ClassLoader cl = Thread.currentThread().getContextClassLoader();
         System.out.println(cl);
@@ -81,6 +83,35 @@ public class ClassLoaderMain {
 
         } catch (ClassNotFoundException ce) {
             ce.printStackTrace();
+        }
+    }
+
+    //调试自定义DiskClassLoader
+    @SuppressWarnings("Duplicates")
+    public static void test04(){
+        try{
+            //将Person.class 剪切到 c:\\lib 下，做测试。
+            DiskClassLoader diskClassLoader = new DiskClassLoader("c:\\lib");
+            Class c = diskClassLoader.loadClass("classloader.Person");
+            if (c != null) {
+                try{
+                    Object obj = c.newInstance();
+                    Method method = c.getDeclaredMethod("say",null);
+                    //相当调用 obj.say()
+                    method.invoke(obj,null);
+                }
+                catch (IllegalAccessException
+                        | InstantiationException
+                        | NoSuchMethodException
+                        | InvocationTargetException e){
+                    e.printStackTrace();
+                }
+
+
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
         }
     }
 
