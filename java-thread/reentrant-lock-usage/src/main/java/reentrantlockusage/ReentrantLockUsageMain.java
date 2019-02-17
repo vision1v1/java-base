@@ -5,8 +5,9 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class ReentrantLockUsageMain {
     public static void main(String[] args) throws Exception {
-        test01();
+        //test01();
         //test02();
+        test03();
         System.out.println("End");
     }
 
@@ -123,5 +124,58 @@ public class ReentrantLockUsageMain {
             e.printStackTrace();
         }
 
+    }
+
+    //调试reentrant lock源代码
+    @SuppressWarnings("Duplicates")
+    public static void test03(){
+        Lock lock = new ReentrantLock();
+
+        Thread t1 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                //测试可重入锁，每次调用lock()，ReentrantLock计数器+1, 需要调用相同次数的unlock()。
+                //计数器为0后，才会真正释放掉锁。
+                lock.lock();
+                lock.lock();
+                try{
+                    System.out.println(Thread.currentThread().getName() + " " + Thread.currentThread().getState());
+                    Thread.sleep(20000);
+                }
+                catch (Exception e){
+
+                }
+                lock.unlock();
+                lock.unlock();
+            }
+        });
+        t1.setName("t1");
+        t1.start();
+
+        Thread t2 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                lock.lock();
+                try{
+                    System.out.println(Thread.currentThread().getName() + " " + Thread.currentThread().getState());
+                    //拿锁的时间多一些，方便调试源代码。
+                    Thread.sleep(60*60*1000);
+                }
+                catch (Exception e){
+
+                }
+
+                lock.unlock();
+            }
+        });
+        t2.setName("t2");
+        t2.start();
+
+        try {
+            t1.join();
+            t2.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
