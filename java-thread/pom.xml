@@ -21,6 +21,7 @@
         <module>future-task-usage</module>
         <module>scheduled-threadpool-executor</module>
         <module>unsafe-cas-usage</module>
+        <module>cyclic-barrier-usage</module>
     </modules>
 
 
