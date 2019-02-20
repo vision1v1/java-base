@@ -22,6 +22,7 @@
         <module>scheduled-threadpool-executor</module>
         <module>unsafe-cas-usage</module>
         <module>cyclic-barrier-usage</module>
+        <module>reentrant-lock-condition</module>
     </modules>
 
 
