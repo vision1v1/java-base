@@ -19,6 +19,7 @@
         <module>java-tree-set</module>
         <module>java-linked-list</module>
         <module>java-vector</module>
+        <module>java-priority-queue</module>
     </modules>
 
 
