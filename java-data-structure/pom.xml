@@ -14,6 +14,11 @@
         <module>java-hash-table</module>
         <module>java-linked-hash-map</module>
         <module>java-tree-map</module>
+        <module>java-linked-hash-set</module>
+        <module>java-hash-set</module>
+        <module>java-tree-set</module>
+        <module>java-linked-list</module>
+        <module>java-vector</module>
     </modules>
 
 
