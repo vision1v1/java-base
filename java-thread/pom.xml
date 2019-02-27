@@ -24,6 +24,7 @@
         <module>cyclic-barrier-usage</module>
         <module>reentrant-lock-condition</module>
         <module>non-reentrant-and-reetrant-lock</module>
+        <module>thread-local-debug</module>
     </modules>
 
 
