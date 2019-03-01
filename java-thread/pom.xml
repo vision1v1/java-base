@@ -26,6 +26,7 @@
         <module>non-reentrant-and-reetrant-lock</module>
         <module>thread-local-debug</module>
         <module>thread-pool-usage</module>
+        <module>atomic-integer-field-updater-usage</module>
     </modules>
 
 
