@@ -25,5 +25,6 @@
     </build>
     <modules>
         <module>class-loader</module>
+        <module>reference</module>
     </modules>
 </project>
