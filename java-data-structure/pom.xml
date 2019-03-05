@@ -20,6 +20,9 @@
         <module>java-linked-list</module>
         <module>java-vector</module>
         <module>java-priority-queue</module>
+        <module>java-copy-on-write-array-list</module>
+        <module>java-cocurrent-skip-list-map</module>
+        <module>java-blocking-queue</module>
     </modules>
 
 
