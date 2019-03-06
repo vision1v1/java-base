@@ -26,5 +26,6 @@
     <modules>
         <module>class-loader</module>
         <module>reference</module>
+        <module>java-advance-debug</module>
     </modules>
 </project>
