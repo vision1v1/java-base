@@ -28,5 +28,6 @@
         <module>reference</module>
         <module>java-advance-debug</module>
         <module>java8-features</module>
+        <module>java-reflect-usage</module>
     </modules>
 </project>
