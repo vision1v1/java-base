@@ -10,9 +10,9 @@ import java.util.Arrays;
 public class ClassLoaderMain {
     public static void main(String[] args) {
         //test01();
-        //test02();
+        test02();
         //test03();
-        test04();
+        //test04();
         end();
     }
 
