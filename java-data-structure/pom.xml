@@ -23,6 +23,7 @@
         <module>java-copy-on-write-array-list</module>
         <module>java-cocurrent-skip-list-map</module>
         <module>java-blocking-queue</module>
+        <module>java-delay-queue</module>
     </modules>
 
 
