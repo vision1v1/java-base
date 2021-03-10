@@ -20,6 +20,9 @@ public class DelayQueueTest {
         while (delayQueue.size() != 0) {
             Order order = delayQueue.poll();
             if (order != null) {
+                // 可以实时删除
+                // boolean removed = delayQueue.removeIf(o -> o.name == "Order3");
+                // System.out.format("Order3 removed : {%s}\n",removed);
                 System.out.format("订单：{%s}被取消，取消时间：{%s}\n", order.name, LocalDateTime.now().format(DateTimeFormatter.ofPattern(timePattern)));
             }
             Thread.sleep(1000);
