@@ -1,10 +1,5 @@
 package reentrantlockcondition;
 
-import com.sun.corba.se.spi.orbutil.threadpool.Work;
-
-import java.io.BufferedReader;
-import java.util.concurrent.ThreadPoolExecutor;
-
 public class ReentrantLockConditionMain {
     public static void main(String[] args) {
         test01();
